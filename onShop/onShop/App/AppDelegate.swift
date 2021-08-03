@@ -9,11 +9,49 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+	
+	var window: UIWindow?
+	let requestFactory = RequestFactory()
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		let auth = requestFactory.makeAuthRequestFatory()
+		auth.login(userName: "Somebody", password: "mypassword") { response in
+			switch response.result {
+			case .success(let result):
+				print(result)
+			case .failure(let error):
+				print(error.localizedDescription)
+			}
+		}
+		auth.logOut(userID: 123) { response in
+			switch response.result {
+			case .success(let result):
+				print(result)
+			case .failure(let error):
+				print(error.localizedDescription)
+			}
+		}
+		
+		let reg = requestFactory.makeRegistrationRequestFactory()
+		reg.registration(userID: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "9872389-2424-234224-234", bio: "This is good! I think I will switch to another language") { response in
+			switch response.result {
+			case .success(let result):
+				print(result)
+			case .failure(let error):
+				print(error.localizedDescription)
+			}
+		}
+		
+		let change = requestFactory.changeUserData()
+		change.changeUserData(userID: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "9872389-2424-234224-234", bio: "This is good! I think I will switch to another language") { (response) in
+			switch response.result {
+			case .success(let result):
+				print(result)
+			case .failure(let error):
+				print(error.localizedDescription)
+			}
+		}
+		
 		return true
 	}
 
