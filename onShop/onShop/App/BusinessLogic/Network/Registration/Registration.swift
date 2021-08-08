@@ -29,7 +29,6 @@ extension Registration: RegistrationRequestFactory {
 		let requestModel = SignUp(userID: userID, username: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
 		self.request(request: requestModel, completionHandler: completionHandler)
 	}
-	
 }
 
 extension Registration {

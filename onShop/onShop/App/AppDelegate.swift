@@ -52,6 +52,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 		
+		let catalogue = requestFactory.productsCalalogue()
+		catalogue.listOfProduct(pageNumber: 1, categoryID: 1) { response in
+			switch response.result {
+			case .success(let result):
+				print(result)
+			case .failure(let error):
+				print(error)
+			}
+		}
+		
+		let product = requestFactory.oneProduct()
+		product.oneProduct(productID: 123) { response in
+			switch response.result {
+			case .success(let result):
+				print(result)
+			case .failure(let error):
+				print(error)
+			}
+		}
+		
 		return true
 	}
 
