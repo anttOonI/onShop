@@ -1,14 +1,13 @@
 //
-//  onShopTests.swift
+//  AuthTests.swift
 //  onShopTests
 //
-//  Created by AntonSobolev on 25.07.2021.
+//  Created by AntonSobolev on 09.08.2021.
 //
 
 import XCTest
-@testable import onShop
 
-class onShopTests: XCTestCase {
+class AuthTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
